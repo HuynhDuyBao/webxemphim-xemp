@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Genre Filter</title>
+</head>
+<body>
+    <h1>Test Genre Filter API</h1>
+    
+    <button onclick="testGenreFilter()">Test Filter Genres (1,2)</button>
+    <button onclick="testNoFilter()">Test No Filter</button>
+    
+    <pre id="result"></pre>
+
+    <script>
+        async function testGenreFilter() {
+            try {
+                const url = 'http://127.0.0.1:8000/api/phim?genres=1,2';
+                console.log('Fetching:', url);
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                console.log('Result:', data);
+            } catch (error) {
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+                console.error(error);
+            }
+        }
+
+        async function testNoFilter() {
+            try {
+                const url = 'http://127.0.0.1:8000/api/phim';
+                console.log('Fetching:', url);
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                console.log('Result:', data);
+            } catch (error) {
+                document.getElementById('result').textContent = 'Error: ' + error.message;
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

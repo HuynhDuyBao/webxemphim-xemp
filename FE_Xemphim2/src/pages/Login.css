@@ -1,0 +1,514 @@
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--brutalist-white);
+    background-image: 
+        linear-gradient(var(--brutalist-black) 1px, transparent 1px),
+        linear-gradient(90deg, var(--brutalist-black) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: relative;
+}
+
+.login-body::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: var(--brutalist-yellow);
+    transform: rotate(45deg);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.login-body::after {
+    content: '';
+    position: absolute;
+    bottom: 15%;
+    right: -5%;
+    width: 300px;
+    height: 300px;
+    background: var(--brutalist-red);
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    width: 1000px;
+    height: 650px;
+    background: var(--brutalist-white);
+    border: 8px solid var(--brutalist-black);
+    box-shadow: 16px 16px 0 var(--brutalist-black);
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+}
+
+.container h1 {
+    font-size: 2.5rem;
+    margin: 0 0 16px 0;
+    color: var(--brutalist-black);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    padding: 10px 20px;
+    background: var(--brutalist-yellow);
+    border: 4px solid var(--brutalist-black);
+    box-shadow: 5px 5px 0 var(--brutalist-black);
+    display: inline-block;
+    transform: rotate(-2deg);
+}
+
+.container p {
+    font-size: 0.85rem;
+    margin: 12px 0;
+    color: var(--brutalist-black);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-box {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--brutalist-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--brutalist-black);
+    text-align: center;
+    padding: 30px 50px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Login Form - Initially Visible on Left */
+.form-box.login {
+    left: 0;
+    z-index: 2;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Register Form - Initially Hidden on Right (conceptually) */
+.form-box.register {
+    left: 0; /* Starts at left but hidden */
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* When Active (Register Mode) */
+.container.active .form-box.login {
+    transform: translateX(100%);
+    visibility: hidden;
+    opacity: 0;
+    transition-delay: 0s; /* Hide immediately when moving out */
+}
+
+.container.active .form-box.register {
+    transform: translateX(100%);
+    visibility: visible;
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s; /* Custom animation for smooth entry */
+}
+
+@keyframes move {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.input-box {
+    position: relative;
+    margin: 12px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 14px 50px 14px 18px;
+    background: var(--brutalist-white);
+    border: 3px solid var(--brutalist-black);
+    border-radius: 0;
+    outline: none;
+    font-size: 15px;
+    color: var(--brutalist-black);
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.input-box input:focus {
+    border-color: var(--brutalist-yellow);
+    box-shadow: 4px 4px 0 var(--brutalist-black);
+    transform: translate(-2px, -2px);
+}
+
+.input-box input::placeholder {
+    color: var(--brutalist-gray);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: var(--brutalist-black);
+}
+
+.forgot-link {
+    margin: -10px 0 16px;
+    text-align: right;
+}
+
+.forgot-link a {
+    font-size: 0.8rem;
+    color: var(--brutalist-black);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.forgot-link a:hover {
+    border: 2px solid var(--brutalist-black);
+    background: var(--brutalist-yellow);
+    box-shadow: 3px 3px 0 var(--brutalist-black);
+}
+
+.btn {
+    width: 100%;
+    height: 50px;
+    background: var(--brutalist-yellow);
+    border: 4px solid var(--brutalist-black);
+    border-radius: 0;
+    box-shadow: 5px 5px 0 var(--brutalist-black);
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--brutalist-black);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    margin-top: 8px;
+}
+
+.btn:hover {
+    transform: translate(-3px, -3px) rotate(-1deg);
+    box-shadow: 8px 8px 0 var(--brutalist-black);
+    background: var(--brutalist-red);
+    color: var(--brutalist-white);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--brutalist-black);
+    border-radius: 0;
+    font-size: 24px;
+    color: var(--brutalist-black);
+    background: var(--brutalist-white);
+    text-decoration: none;
+    box-shadow: 4px 4px 0 var(--brutalist-black);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-icons a:hover {
+    background: var(--brutalist-cyan);
+    transform: translate(-2px, -2px) rotate(-5deg);
+    box-shadow: 6px 6px 0 var(--brutalist-black);
+}
+
+/* Toggle Box - The Sliding Overlay */
+.toggle-box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+    border-left: 8px solid var(--brutalist-black);
+}
+
+.container.active .toggle-box {
+    transform: translateX(-100%);
+    border-left: none;
+    border-right: 8px solid var(--brutalist-black);
+}
+
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--brutalist-black) 0%, var(--brutalist-red) 50%, var(--brutalist-yellow) 100%);
+    border-radius: 0;
+    z-index: 2;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.container.active .toggle-box::before {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: var(--brutalist-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    top: 0;
+    padding: 40px;
+}
+
+/* Left Panel (Welcome Back) - Hidden initially */
+.toggle-left {
+    left: 0;
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+    transform: translateX(0);
+}
+
+/* Right Panel (Hello) - Visible initially */
+.toggle-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.active .toggle-right {
+    transform: translateX(200%);
+}
+
+.toggle-panel h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+}
+
+.toggle-panel p {
+    font-size: 1rem;
+    margin-bottom: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.toggle-panel .btn {
+    width: 180px;
+    height: 50px;
+    background: transparent;
+    border: 4px solid var(--brutalist-white);
+    color: var(--brutalist-white);
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+    margin-top: 0;
+}
+
+.toggle-panel .btn:hover {
+    background: var(--brutalist-white);
+    color: var(--brutalist-black);
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.4);
+}
+
+.error-text {
+    color: var(--brutalist-red);
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 3px solid var(--brutalist-red);
+    box-shadow: 3px 3px 0 var(--brutalist-black);
+}
+
+/* DARK MODE SUPPORT */
+[data-theme="dark"] .login-body {
+    background: var(--bg-color);
+}
+
+[data-theme="dark"] .login-body::before {
+    background: var(--primary-color);
+}
+
+[data-theme="dark"] .login-body::after {
+    background: var(--secondary-color);
+}
+
+[data-theme="dark"] .container {
+    background: var(--bg-card);
+    border-color: var(--brutalist-black);
+    box-shadow: 16px 16px 0 rgba(0, 229, 255, 0.5);
+}
+
+[data-theme="dark"] .form-box {
+    background: var(--bg-card);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .container h1 {
+    background: var(--primary-color);
+    color: #0A0A0A;
+    border-color: var(--brutalist-black);
+    box-shadow: 6px 6px 0 rgba(0, 229, 255, 0.5);
+}
+
+[data-theme="dark"] .container p {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .input-box input {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-color: var(--brutalist-black);
+}
+
+[data-theme="dark"] .input-box input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 4px 4px 0 rgba(0, 229, 255, 0.5);
+}
+
+[data-theme="dark"] .input-box i {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .forgot-link a {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .forgot-link a:hover {
+    background: var(--primary-color);
+    color: #0A0A0A;
+    border-color: var(--brutalist-black);
+    box-shadow: 3px 3px 0 rgba(0, 229, 255, 0.5);
+}
+
+[data-theme="dark"] .btn {
+    background: var(--primary-color);
+    color: #0A0A0A;
+    box-shadow: 6px 6px 0 rgba(0, 229, 255, 0.5);
+}
+
+[data-theme="dark"] .btn:hover {
+    background: var(--secondary-color);
+    color: var(--brutalist-white);
+    box-shadow: 9px 9px 0 rgba(0, 229, 255, 0.7);
+}
+
+[data-theme="dark"] .social-icons a {
+    background: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 4px 4px 0 rgba(0, 229, 255, 0.5);
+}
+
+[data-theme="dark"] .social-icons a:hover {
+    background: var(--primary-color);
+    color: #0A0A0A;
+    box-shadow: 6px 6px 0 rgba(0, 229, 255, 0.7);
+}
+
+[data-theme="dark"] .toggle-box {
+    border-left-color: var(--brutalist-black);
+}
+
+[data-theme="dark"] .toggle-box::before {
+    background: linear-gradient(135deg, #0A0A0A 0%, var(--secondary-color) 50%, var(--primary-color) 100%);
+}
+
+[data-theme="dark"] .error-text {
+    background: rgba(255, 51, 102, 0.2);
+    border-color: var(--secondary-color);
+    box-shadow: 4px 4px 0 rgba(255, 51, 102, 0.5);
+}
+
+@media screen and (max-width: 1100px) {
+    .container {
+        width: 850px;
+        height: 550px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .container {
+        width: 95%;
+        height: 600px;
+    }
+    .form-box {
+        padding: 30px 35px;
+    }
+    .container h1 {
+        font-size: 2rem;
+        padding: 8px 16px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .container {
+        width: 95%;
+        height: 650px;
+    }
+    .form-box {
+        padding: 25px 30px;
+    }
+    .container h1 {
+        font-size: 1.8rem;
+        padding: 8px 16px;
+    }
+    .toggle-panel h1 {
+        font-size: 2rem;
+    }
+    form {
+        max-width: 100%;
+    }
+}

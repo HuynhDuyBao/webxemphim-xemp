@@ -1,0 +1,148 @@
+/* src/pages/AdminMovieEpisodes.css - Modern Dark Design */
+.episode-admin-wrapper {
+  padding: 20px;
+  color: #fff;
+  background: #0a0a0a;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.ep-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.ep-title span {
+  color: #00ff88;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.ep-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: #0f0f11;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #1f1f23;
+}
+
+.ep-form input {
+  padding: 0.85rem 1.1rem;
+  background: #1a1a1f;
+  border: 1px solid #2a2a2f;
+  color: #fff;
+  border-radius: 8px;
+  flex: 1;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ep-form input:focus {
+  outline: none;
+  background: #232328;
+  border-color: #00ff88;
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+}
+
+.ep-form input::placeholder { 
+  color: #666; 
+}
+
+.ep-form button {
+  background: linear-gradient(135deg, #00ff88, #00cc6a);
+  border: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #0a0a0a;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+}
+
+.ep-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+  background: linear-gradient(135deg, #00ff99, #00dd7a);
+}
+
+.ep-list-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ep-list .empty {
+  color: #666;
+  padding: 40px;
+  text-align: center;
+  background: #141416;
+  border-radius: 12px;
+  border: 1px dashed #2a2a2f;
+}
+
+.ep-item {
+  background: #141416;
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #1f1f23;
+  transition: all 0.2s ease;
+}
+
+.ep-item:hover {
+  background: #1a1a1f;
+  border-color: #2a2a2f;
+  transform: translateX(4px);
+}
+
+.ep-item strong {
+  color: #00ff88;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ep-info a {
+  color: #00ccff;
+  font-size: 13px;
+  margin-left: 12px;
+  padding: 6px 12px;
+  background: rgba(0, 204, 255, 0.1);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ep-info a:hover {
+  background: rgba(0, 204, 255, 0.2);
+  color: #00ddff;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
+}
+
+.delete-btn:hover {
+  background: linear-gradient(135deg, #ff5555, #dd1111);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+}

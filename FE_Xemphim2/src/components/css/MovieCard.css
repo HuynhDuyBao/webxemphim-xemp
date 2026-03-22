@@ -1,0 +1,381 @@
+/* src/components/css/MovieCard.css - BRUTALIST PORTFOLIO CARD */
+
+.movie-card-modern {
+  width: 100%;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--brutalist-white);
+  border: 5px solid var(--brutalist-black);
+  box-shadow: var(--brutalist-shadow);
+  padding: 0;
+  overflow: hidden;
+  transform: rotate(0deg);
+}
+
+.movie-card-modern:nth-child(3n+1) {
+  transform: rotate(-1deg);
+}
+
+.movie-card-modern:nth-child(3n+2) {
+  transform: rotate(1deg);
+}
+
+.movie-card-modern:hover {
+  transform: translateY(-12px) scale(1.05) rotate(0deg) !important;
+  box-shadow: var(--brutalist-shadow-hover);
+  border-color: var(--brutalist-yellow);
+  z-index: 100;
+}
+
+/* Poster Container */
+.card-poster {
+  position: relative;
+  width: 100%;
+  min-width: 100%;
+  min-height: 380px;
+  aspect-ratio: 2/3;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  transition: transform var(--transition-normal);
+  background: var(--brutalist-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 5px solid var(--brutalist-black);
+}
+
+.movie-card-modern:hover .card-poster {
+  box-shadow: none;
+}
+
+.card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  background: var(--brutalist-black);
+  display: block;
+  transition: transform var(--transition-normal);
+}
+
+.movie-card-modern:hover .card-poster img {
+  transform: scale(1.05);
+  filter: contrast(1.2);
+}
+
+@media (max-width: 1200px) {
+  .card-poster {
+    min-height: 280px;
+    border-radius: 0;
+  }
+  .card-poster img {
+    border-radius: 0;
+  }
+}
+@media (max-width: 768px) {
+  .card-poster {
+    min-height: 200px;
+    border-radius: 0;
+  }
+  .card-poster img {
+    border-radius: 0;
+  }
+}
+
+/* Badges */
+.card-badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 5;
+}
+
+.badge-quality, .badge-year {
+  background: var(--brutalist-black);
+  backdrop-filter: none;
+  color: var(--brutalist-yellow);
+  font-size: 13px;
+  font-weight: 900;
+  padding: 8px 16px;
+  border-radius: 0;
+  border: 3px solid var(--brutalist-yellow);
+  width: fit-content;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+}
+
+.badge-quality {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  border-color: var(--brutalist-black);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+}
+
+/* Overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(255, 229, 0, 0.95) 0%,
+    rgba(255, 229, 0, 0.4) 50%,
+    rgba(255, 229, 0, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 5px solid var(--brutalist-black);
+}
+
+.movie-card-modern:hover .card-overlay {
+  opacity: 1;
+}
+
+/* Play Button */
+.play-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 0;
+  background: var(--brutalist-black);
+  backdrop-filter: none;
+  border: 5px solid var(--brutalist-yellow);
+  color: var(--brutalist-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0) rotate(0deg);
+  transition: all var(--transition-bounce);
+  cursor: pointer;
+  box-shadow: var(--brutalist-shadow);
+  font-size: 48px;
+  font-weight: 900;
+}
+
+.play-button:hover {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  border-color: var(--brutalist-black);
+  transform: scale(1.15) rotate(90deg) !important;
+  box-shadow: var(--brutalist-shadow-hover);
+}
+
+.movie-card-modern:hover .play-button {
+  transform: scale(1) rotate(0deg);
+}
+
+/* Favorite Button */
+.favorite-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 0;
+  background: var(--brutalist-black);
+  backdrop-filter: none;
+  border: 3px solid var(--brutalist-yellow);
+  color: var(--brutalist-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-bounce);
+  transform: translateY(0) rotate(0deg);
+  opacity: 1;
+  font-size: 24px;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+  font-weight: 900;
+}
+
+.movie-card-modern:hover .favorite-btn {
+  transform: translateY(0) rotate(0deg);
+  opacity: 1;
+}
+
+.favorite-btn:hover {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transform: scale(1.1) rotate(15deg);
+  border-color: var(--brutalist-black);
+}
+
+.favorite-btn.active {
+  background: var(--brutalist-red);
+  border-color: var(--brutalist-black);
+  color: var(--brutalist-white);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+}
+
+/* Overlay Info (Bottom) */
+.overlay-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  transform: translateY(0);
+  transition: transform var(--transition-normal);
+  background: var(--brutalist-yellow);
+  border-top: 5px solid var(--brutalist-black);
+}
+
+.movie-card-modern:hover .overlay-info {
+  transform: translateY(0);
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--brutalist-black);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+.genres-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.genre-pill {
+  font-size: 12px;
+  color: var(--brutalist-white);
+  background: var(--brutalist-black);
+  padding: 6px 14px;
+  border-radius: 0;
+  border: 3px solid var(--brutalist-black);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  letter-spacing: 1px;
+}
+
+/* Card Content (Below Poster) */
+.card-content {
+  padding: 20px;
+  margin-top: 0;
+  background: var(--brutalist-white);
+  border-top: 5px solid var(--brutalist-black);
+}
+
+.card-title {
+  color: var(--brutalist-black);
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color var(--transition-fast);
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+.movie-card-modern:hover .card-title {
+  color: var(--brutalist-red);
+}
+
+.card-subtitle {
+  color: var(--brutalist-gray-dark);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-heading);
+}
+
+/* Responsive: Card lớn hơn trên desktop, vừa trên mobile */
+@media (max-width: 1200px) {
+  .movie-card-modern {
+    max-width: 260px;
+    min-width: 180px;
+  }
+  .card-poster {
+    min-height: 280px;
+    border-radius: 0;
+  }
+  .play-button {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+  .favorite-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .movie-card-modern {
+    max-width: 180px;
+    min-width: 120px;
+    gap: 0;
+    border-radius: 0;
+    border-width: 3px;
+  }
+  .card-poster {
+    min-height: 200px;
+    border-radius: 0;
+    border-bottom-width: 3px;
+  }
+  .card-content {
+    padding: 12px;
+    margin-top: 0;
+    border-top-width: 3px;
+  }
+  .card-title {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  .card-subtitle {
+    font-size: 11px;
+  }
+  .play-button {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    border-width: 3px;
+  }
+  .favorite-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    border-width: 2px;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+  }
+  .badge-quality, .badge-year {
+    font-size: 10px;
+    padding: 6px 10px;
+    border-width: 2px;
+  }
+}

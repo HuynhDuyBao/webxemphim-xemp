@@ -1,0 +1,46 @@
+/* src/App.css */
+
+/* === GLOBAL STYLES === */
+/* Most global styles are now in index.css using CSS variables */
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+/* === LAYOUT & CONTAINER === */
+.main-content {
+  padding-top: 70px; /* Height of the header */
+  min-height: calc(100vh - 70px);
+  position: relative;
+  z-index: 1;
+}
+
+/* === UTILITY CLASSES === */
+.text-danger {
+  color: var(--primary-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.mt-2 { margin-top: 0.5rem; }
+.mb-4 { margin-bottom: 1.5rem; }

@@ -1,0 +1,409 @@
+/* src/pages/Home.css - BRUTALIST AGENCY PORTFOLIO */
+
+.home-page {
+  background-color: var(--brutalist-white);
+  min-height: 100vh;
+  color: var(--text-color);
+  padding-bottom: 80px;
+  position: relative;
+  overflow-x: clip;
+}
+
+.home-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--brutalist-black) 1px, transparent 1px),
+    linear-gradient(90deg, var(--brutalist-black) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle animated background glow */
+.home-page::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+  animation: pulse-glow 15s infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes pulse-glow {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+  100% { transform: translate(2%, 2%) scale(1.1); opacity: 0.8; }
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin: 80px 0 40px;
+  padding: 20px 30px;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  color: var(--brutalist-black);
+  background: var(--brutalist-yellow);
+  border: 5px solid var(--brutalist-black);
+  box-shadow: var(--brutalist-shadow);
+  display: inline-block;
+  transform: rotate(-1deg);
+  position: relative;
+  z-index: 1;
+  transition: all var(--transition-normal);
+}
+
+.section-title:hover {
+  transform: rotate(1deg) scale(1.02);
+  box-shadow: var(--brutalist-shadow-hover);
+}
+
+/* === STYLE FOR HORIZONTAL SCROLL ROW === */
+.movie-row-container {
+  position: relative;
+  margin-bottom: 100px;
+  padding: 0 5%;
+  background: var(--brutalist-light-gray);
+  border-top: 5px solid var(--brutalist-black);
+  border-bottom: 5px solid var(--brutalist-black);
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* BRUTALIST SCROLL BUTTONS */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background: var(--brutalist-black);
+  border: 4px solid var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  opacity: 0;
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.movie-row-container:hover .scroll-btn {
+  opacity: 1;
+}
+
+.scroll-btn:hover {
+  background: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transform: translateY(-50%) scale(1.15) rotate(5deg);
+}
+
+.scroll-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.scroll-btn.left {
+  left: 20px;
+}
+
+.scroll-btn.right {
+  right: 20px;
+}
+
+.movie-row {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 30px 10px;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-row-item {
+  flex-shrink: 0;
+  width: 300px;
+  max-width: 100%;
+  transition: all var(--transition-normal);
+  border: 5px solid var(--brutalist-black);
+  background: var(--brutalist-white);
+  box-shadow: var(--brutalist-shadow);
+  transform: rotate(0deg);
+}
+
+.movie-row-item:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.movie-row-item:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.movie-row-item:hover {
+  z-index: 20;
+  box-shadow: var(--brutalist-shadow-hover);
+  transform: scale(1.08) translateY(-10px) rotate(0deg) !important;
+  border-color: var(--brutalist-yellow);
+  background: var(--brutalist-yellow);
+}
+
+/* === BRUTALIST GRID LAYOUT === */
+.movie-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 50px 40px;
+  padding: 60px 5%;
+  background: var(--brutalist-white);
+  position: relative;
+}
+
+.movie-grid-container::before {
+  content: 'ALL MOVIES';
+  position: absolute;
+  top: -40px;
+  left: 5%;
+  font-size: 8rem;
+  font-weight: 900;
+  color: var(--brutalist-light-gray);
+  letter-spacing: -5px;
+  text-transform: uppercase;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === BRUTALIST LOAD MORE CTA === */
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin: 80px 0 60px;
+  position: relative;
+}
+
+.btn-load-more {
+  background: var(--brutalist-black);
+  color: var(--brutalist-yellow);
+  border: 5px solid var(--brutalist-black);
+  padding: 25px 80px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  box-shadow: var(--brutalist-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-load-more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--brutalist-yellow);
+  transition: left 0.3s;
+  z-index: -1;
+}
+
+.btn-load-more:hover {
+  color: var(--brutalist-black);
+  transform: translateY(-5px);
+  box-shadow: var(--brutalist-shadow-hover);
+}
+
+.btn-load-more:hover::before {
+  left: 0;
+}
+
+.btn-load-more:active {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 var(--brutalist-black);
+}
+
+.btn-load-more:disabled {
+  background-color: var(--brutalist-gray);
+  color: var(--brutalist-dark-gray);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.5;
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-style: italic;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* === BRUTALIST TOPIC/CATEGORY CARDS === */
+.topic-section {
+  margin: 100px 0;
+  padding: 40px 5% 50px;
+  background: var(--brutalist-black);
+  border-top: 8px solid var(--brutalist-yellow);
+  border-bottom: 8px solid var(--brutalist-yellow);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--brutalist-yellow) rgba(255, 255, 255, 0.1);
+}
+
+.topic-section::-webkit-scrollbar {
+  height: 12px;
+}
+
+.topic-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.topic-section::-webkit-scrollbar-thumb {
+  background: var(--brutalist-yellow);
+  border-radius: 6px;
+  border: 2px solid var(--brutalist-black);
+}
+
+.topic-section::-webkit-scrollbar-thumb:hover {
+  background: var(--brutalist-cyan);
+}
+
+.topic-list {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  padding: 10px 0;
+}
+
+.topic-card {
+  min-width: 280px;
+  flex-shrink: 0;
+  height: 180px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  border: 5px solid var(--brutalist-white);
+  background: var(--brutalist-black);
+  box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.2);
+}
+
+.topic-card:hover {
+  transform: translateY(-8px) rotate(-2deg);
+  box-shadow: 12px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.topic-card h3 {
+  margin: 0;
+  color: var(--brutalist-white);
+  font-size: 1.8rem;
+  font-weight: 900;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.topic-card span {
+  color: var(--brutalist-white);
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+/* BRUTALIST COLOR BLOCKS */
+.topic-gradient-0 { border-color: var(--brutalist-blue); }
+.topic-gradient-0:hover { background: var(--brutalist-blue); }
+
+.topic-gradient-1 { border-color: var(--brutalist-pink); }
+.topic-gradient-1:hover { background: var(--brutalist-pink); }
+
+.topic-gradient-2 { border-color: var(--brutalist-green); }
+.topic-gradient-2:hover { background: var(--brutalist-green); }
+
+.topic-gradient-3 { border-color: var(--brutalist-yellow); }
+.topic-gradient-3:hover { background: var(--brutalist-yellow); color: var(--brutalist-black); }
+
+.topic-gradient-4 { border-color: var(--brutalist-red); }
+.topic-gradient-4:hover { background: var(--brutalist-red); }
+
+.topic-gradient-5 { border-color: var(--brutalist-cyan); }
+.topic-gradient-5:hover { background: var(--brutalist-cyan); color: var(--brutalist-black); }
+
+.topic-card.active {
+  background: var(--brutalist-yellow);
+  border-color: var(--brutalist-yellow);
+  color: var(--brutalist-black);
+  transform: scale(1.05) rotate(0deg);
+  box-shadow: 15px 15px 0 rgba(0, 0, 0, 0.8);
+}
+
+.topic-card.active h3,
+.topic-card.active span {
+  color: var(--brutalist-black);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1400px) {
+  .movie-row-item {
+    width: 180px;
+    border-radius: 14px;
+  }
+  .movie-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 18px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  .movie-row-item {
+    width: 110px;
+    border-radius: 8px;
+  }
+  .movie-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px 8px;
+  }
+  .movie-row-container {
+    padding: 0 8px;
+    margin-bottom: 20px;
+  }
+  .topic-card {
+    min-width: 160px;
+    height: 100px;
+    padding: 16px;
+  }
+  .topic-card h3 {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,119 @@
+/* src/components/FeaturedSlider.css - BRUTALIST HERO SLIDER */
+.featured-slider-container {
+  width: 100%;
+  height: 75vh;
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+  background: var(--brutalist-black);
+  border-bottom: 8px solid var(--brutalist-yellow);
+  margin-top: 80px;
+}
+.slider-loading {
+  height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #555;
+}
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Smooth slide transition */
+}
+.slider-item {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 30%; /* Focus more on the center */
+  position: relative;
+  cursor: pointer;
+}
+.slider-item-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(20,20,20,1) 0%, rgba(20,20,20,0) 40%),
+              linear-gradient(to right, rgba(20,20,20,0.7) 0%, rgba(20,20,20,0) 50%);
+}
+.slider-item-content {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  z-index: 2;
+  color: #fff;
+  max-width: 45%;
+  padding-right: 20px;
+}
+.slider-item-content h3 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.7);
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+.slider-item-content p {
+  font-size: 1.1rem;
+  color: #e5e5e5;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  width: 50px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.featured-slider-container:hover .slider-nav {
+  opacity: 0.7;
+}
+.slider-nav:hover {
+  opacity: 1;
+  background: rgba(20, 20, 20, 0.8);
+}
+.slider-nav.left {
+  left: 20px;
+}
+.slider-nav.right {
+  right: 20px;
+}
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.dot.active {
+  background: #fff;
+  transform: scale(1.2);
+}
